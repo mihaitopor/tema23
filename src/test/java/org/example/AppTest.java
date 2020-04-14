@@ -32,8 +32,7 @@ public class AppTest
     NotaValidator notaValidator = new NotaValidator(studentXMLRepository, temaXMLRepository);
     NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
     Service service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
-
-
+//BBT
     @Test
     public void addStudent() {
 
@@ -53,9 +52,40 @@ public class AppTest
 
         try{
             service.addStudent(new_student);
+            assert(false);
         }
         catch(Exception e) {
-            assertEquals(e.getMessage(),"Id incorect!");
+            assert(true);
+        }
+    }
+
+    @Test
+    public void addStudentUnderZeroId() {
+
+        Student new_student = new Student("-1","Mihai",937,"etc@yahoo.com");
+
+
+        try{
+            service.addStudent(new_student);
+            assert(false);
+        }
+        catch(Exception e) {
+            assert(true);
+        }
+    }
+
+    @Test
+    public void addStudentNullId() {
+
+        Student new_student = new Student(null,"Mihai",937,"etc@yahoo.com");
+
+
+        try{
+            service.addStudent(new_student);
+            assert(false);
+        }
+        catch(Exception e) {
+            assert(true);
         }
     }
 
@@ -67,9 +97,10 @@ public class AppTest
 
         try{
             service.addStudent(new_student);
+            assert(false);
         }
         catch(Exception e) {
-            assertEquals(e.getMessage(),"Grupa incorecta!");
+            assert(true);
         }
     }
 
@@ -81,9 +112,10 @@ public class AppTest
 
         try{
             service.addStudent(new_student);
+            assert(false);
         }
         catch(Exception e) {
-            assertEquals(e.getMessage(),"Email incorect!");
+            assert(true);
         }
     }
 
@@ -93,9 +125,10 @@ public class AppTest
         Student new_student = new Student("2133","Mihai",937,null);
         try{
             service.addStudent(new_student);
+            assert(false);
         }
         catch(Exception e) {
-            assertEquals(e.getMessage(),"Email incorect!");
+            assert(true);
         }
     }
 
@@ -107,9 +140,10 @@ public class AppTest
 
         try{
             service.addStudent(new_student);
+            assert(false);
         }
         catch(Exception e) {
-            assertEquals(e.getMessage(),"Nume incorect!");
+            assert(true);
         }
     }
 
@@ -121,12 +155,15 @@ public class AppTest
 
         try{
             service.addStudent(new_student);
+            assert(false);
         }
         catch(Exception e) {
-            assertEquals(e.getMessage(),"Nume incorect!");
+            assert(true);
         }
     }
 
+
+    //WBT
     @Test
     public void addAssignmentValidID() {
 
@@ -153,7 +190,7 @@ public class AppTest
     }
 
     @Test
-    public void addAssignementTestSuccess(){
+    public void addAssignementSuccess(){
         Tema new_tema = new Tema("999","test", 10, 8);
 
         service.addTema(new_tema);
@@ -162,7 +199,7 @@ public class AppTest
         service.deleteTema("999");
     }
     @Test
-    public void addAssignementTestFailID(){
+    public void addAssignementFailID(){
         Tema new_tema = new Tema("","test", 99, 98);
 
         try{
@@ -174,7 +211,7 @@ public class AppTest
 
     }
     @Test
-    public void addAssignementTestFailDescription(){
+    public void addAssignementFailDescription(){
         Tema new_tema = new Tema("1111","", 99, 98);
 
         try{
@@ -186,7 +223,7 @@ public class AppTest
 
     }
     @Test
-    public void addAssignementTestFailDeadline(){
+    public void addAssignementFailDeadline(){
         Tema new_tema = new Tema("1111","Test", 0, 98);
 
         try{
@@ -198,7 +235,7 @@ public class AppTest
 
     }
     @Test
-    public void addAssignementTestFailDeadlineMinus(){
+    public void addAssignementFailDeadlineMinus(){
         Tema new_tema = new Tema("1111","Test", -100, 98);
 
         try{
@@ -210,7 +247,7 @@ public class AppTest
 
     }
     @Test
-    public void addAssignementTestFailDeadlinePlus(){
+    public void addAssignementFailDeadlinePlus(){
         Tema new_tema = new Tema("1111","Test", 16, 15);
 
         try{
@@ -222,7 +259,7 @@ public class AppTest
 
     }
     @Test
-    public void addAssignementTestFailPrimire(){
+    public void addAssignementFailPrimire(){
         Tema new_tema = new Tema("1111","Test", 10, 0);
 
         try{
@@ -234,7 +271,7 @@ public class AppTest
 
     }
     @Test
-    public void addAssignementTestFailPrimireMinus(){
+    public void addAssignementFailPrimireMinus(){
         Tema new_tema = new Tema("1111","Test", 10, -100);
 
         try{
@@ -246,7 +283,7 @@ public class AppTest
 
     }
     @Test
-    public void addAssignementTestFailPrimirePlus(){
+    public void addAssignementFailPrimirePlus(){
         Tema new_tema = new Tema("1111","Test", 10, 15);
 
         try{
@@ -258,7 +295,7 @@ public class AppTest
 
     }
     @Test
-    public void addAssignementTestFailDeadlinePrimireSwitch(){
+    public void addAssignementFailDeadlinePrimireSwitch(){
         Tema new_tema = new Tema("1111","Test", 5, 8);
 
         try{
