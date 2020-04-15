@@ -1,5 +1,6 @@
 package org.example;
 
+import domain.Nota;
 import domain.Student;
 import domain.Tema;
 import org.junit.Test;
@@ -12,6 +13,8 @@ import validation.NotaValidator;
 import validation.StudentValidator;
 import validation.TemaValidator;
 import view.UI;
+
+import java.time.LocalDate;
 
 import static org.junit.Assert.*;
 
@@ -346,5 +349,54 @@ public class AppTest
 
     }
 
+    //Integration test
+    @Test
+    public void addStudentIntegration() {
+
+        Student new_student = new Student("2133","Mihai",937,"etc@yahoo.com");
+
+        service.addStudent(new_student);
+        assertEquals(service.findStudent("2133"),new_student);
+
+        service.deleteStudent("2133");
+    }
+
+    @Test
+    public void addAssignmentIntegration() {
+
+        Tema new_tema = new Tema("1234","Test homework", 7, 5);
+
+        service.addTema(new_tema);
+        assertEquals(service.findTema("1234"),new_tema);
+
+        service.deleteTema("1234");
+    }
+
+    @Test
+    public void addNotaIntegration() {
+
+        Nota new_nota = new Nota("123","4","1",10, LocalDate.now());
+
+        try {
+            service.addNota(new_nota,"nu e bine");
+            assert(false);
+        }
+        catch(Exception e){
+            assert(true);
+        }
+    }
+
+    @Test
+    public void allIntegration() {
+        try {
+            addStudentIntegration();
+            addAssignmentIntegration();
+            addNotaIntegration();
+            assert(true);
+        }
+        catch(Exception e){
+            assert(false);
+        }
+    }
 
 }
