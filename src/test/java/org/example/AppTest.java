@@ -401,7 +401,7 @@ public class AppTest
 
     //Integration homework
     @Test
-    public void addStudentIntegrationHG() {
+    public void addStudentIntegrationH() {
 
         Student new_student = new Student("2133","Mihai",937,"etc@yahoo.com");
 
@@ -412,8 +412,8 @@ public class AppTest
     }
 
     @Test
-    public void addAssignmentIntegrationHG() {
-        addStudentIntegrationHG();
+    public void addAssignmentIntegrationH() {
+        addStudentIntegrationH();
 
         Tema new_tema = new Tema("1234","Test homework", 7, 5);
 
@@ -424,9 +424,9 @@ public class AppTest
     }
 
     @Test
-    public void addNotaIntegrationHG() {
-        
-        addAssignmentIntegrationHG();
+    public void addNotaIntegrationH() {
+
+        addAssignmentIntegrationH();
 
         Nota new_nota = new Nota("123","4","1",10, LocalDate.now());
 
